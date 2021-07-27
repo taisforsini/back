@@ -35,6 +35,7 @@ const PostSchema = new Schema(
     image: {
       type: String,
       default: "",
+      trim: true,
     },
 
     userId: {
