@@ -12,23 +12,23 @@ const uploader = require("../config/cloudinary.config");
 // Create new post
 router.post(
   "/post",
-  // isAuthenticated,
-  // attachCurrentUser,
+  isAuthenticated,
+  attachCurrentUser,
   async (req, res, next) => {
     try {
-      // const loggedInUser = req.currentUser;
+      const loggedInUser = req.currentUser;
       const newPost = await PostModel.create({
-        // userId: loggedInUser._id,
+        userId: loggedInUser._id,
         ...req.body,
       });
 
-      // const updateUser = await UserModel.findOneAndUpdate(
-      //   {
-      //     _id: loggedInUser._id,
-      //   },
-      //   { $push: { posts: newPost._id } },
-      //   { new: true }
-      // );
+      const updateUser = await UserModel.findOneAndUpdate(
+        {
+          _id: loggedInUser._id,
+        },
+        { $push: { posts: newPost._id } },
+        { new: true }
+      );
       return res.status(201).json(newPost);
     } catch (err) {
       next(err);
@@ -36,7 +36,7 @@ router.post(
   }
 );
 
-// Get all posts
+// Get user's posts
 router.get(
   "/post",
   isAuthenticated,
@@ -46,6 +46,27 @@ router.get(
       const loggedInUser = req.currentUser;
 
       const posts = await PostModel.find({ userId: loggedInUser._id });
+
+      if (!posts) {
+        return res
+          .status(400)
+          .json({ error: "Você ainda não tem nenhum post." });
+      }
+
+      return res.status(200).json(posts);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.get(
+  "/posts",
+  isAuthenticated,
+  attachCurrentUser,
+  async (req, res, next) => {
+    try {
+      const posts = await PostModel.find().populate("userId");
 
       if (!posts) {
         return res
@@ -121,7 +142,7 @@ router.delete(
   }
 );
 
-router.post("/upload", uploader.single("image"), (req, res) => {
+router.post("/image-post-upload", uploader.single("image"), (req, res) => {
   if (!req.file) {
     return res
       .status(500)
