@@ -127,5 +127,24 @@ router.post("/upload", uploader.single("profilePicture"), (req, res) => {
   console.log(req.file);
   return res.status(201).json({ url: req.file.path });
 });
+router.put(
+  "/profile/edit",
+  isAuthenticated,
+  attachCurrentUser,
+  async (req, res, next) => {
+    try {
+      //const { id } = req.params;
 
+      const updatedProfile = await UserModel.findOneAndUpdate(
+        { _id: req.currentUser._id },
+        { $set: { ...req.body } },
+        { new: true }
+      );
+
+      return res.status(200).json(updatedProfile);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 module.exports = router;
