@@ -118,6 +118,26 @@ router.get("/profile", isAuthenticated, attachCurrentUser, (req, res) => {
   }
 });
 
+// Update profile
+router.put(
+  "/profile/edit",
+  isAuthenticated,
+  attachCurrentUser,
+  async (req, res, next) => {
+    try {
+      const updatedProfile = await UserModel.findOneAndUpdate(
+        { _id: req.currentUser._id },
+        { $set: { ...req.body } },
+        { new: true }
+      );
+
+      return res.status(200).json(updatedPost);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 router.post("/upload", uploader.single("profilePicture"), (req, res) => {
   if (!req.file) {
     return res
