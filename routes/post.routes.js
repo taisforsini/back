@@ -90,10 +90,12 @@ router.get(
     try {
       const { id } = req.params;
 
-      const post = await PostModel.findOne({ _id: id }).populate({
-        path: "comments",
-        populate: { path: "userId", model: "User" },
-      });
+      const post = await PostModel.findOne({ _id: id })
+        .populate("userId")
+        .populate({
+          path: "comments",
+          populate: { path: "userId", model: "User" },
+        });
 
       return res.status(200).json(post);
     } catch (err) {

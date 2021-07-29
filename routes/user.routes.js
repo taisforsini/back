@@ -131,7 +131,7 @@ router.put(
         { new: true }
       );
 
-      return res.status(200).json(updatedPost);
+      return res.status(200).json(updatedProfile);
     } catch (err) {
       next(err);
     }
