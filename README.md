@@ -1,53 +1,27 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
-
-# IronREST Boilerplate
-
-Esse boilerplate para API RESTful já inclui:
-
-- Autenticação por tokens JWT usando o Passport
-- Conexão com banco de dados MongoDB usando Mongoose
-- Servidor Web usando Express pré-configurado com CORS e aceitando requisições JSON e Multipart Form
-- Upload de arquivos usando Cloudinary e Multer
-
-## Para Começar
-
-- Faça o fork e clone deste repositório
-
-## Instalação
-
-```shell
-$ npm install
-```
-
-## Desenvolvimento
-
-Para iniciar o servidor web localmente execute no seu terminal:
-
-```shell
-$ npm run dev
-```
-
-## Deploy do MongoDB
-
-1. Faça login no https://account.mongodb.com/account/login?nds=true
-2. Crie um cluster gratuito
-3. Siga as instruções e obtenha a string de conexão com o banco
-4. Crie uma variável de ambiente MONGODB_URI no Heroku com a string de conexão copiada do Atlas
-
-## Deploy no Heroku
-
-1. Faça login no Heroku e selecione seu repositório
-2. Habilite 'automatic deploys'
-3. No seu terminal, execute os seguintes comandos:
-
-```shell
-$ git add .
-$ git commit -m 'deploying'
-$ heroku git:remote -a nome-do-repo-no-heroku
-$ git push heroku master
-```
-
-4. Adicione uma variável de ambiente no Heroku para cada variável de ambiente presente no arquivo .env (não precisa criar a PORT no Heroku)
-5. Adicione a URL da sua API hospedada no Heroku nas variáveis de ambiente do app React no Netlify
-
-Happy coding! 💙
+<h1>
+  Trippers.
+</h1>
+<h2>
+  Sobre o App:
+</h2>
+<p>TRIPPERS é uma rede social e tem como intuito oferecer a troca de informações entre viajantes, a fim de proporcinoar a melhor experiência para todos com o menor custo possível</p>
+<p><a href="https://docs.google.com/presentation/d/1lyFAsuDIlzkyMOJmZpw1o8sjjkVqsItPatuaOC86g-A/edit?usp=sharing">Apresentação</p>
+<h2>
+  Funcionalidades:
+</h2>
+<p>Na aplicação é possível criar um usuário, inserindo as informações e imagem de perfil, editar o perfil, fazer login e logoff, criar publicações, editar e excluir as mesmas e publicar comentários nas postagens.</p>
+<h2>
+  Tecnologias utilizadas:
+</h2>
+<p>Trippers é uma aplicação responsiva e foi desenvolvida em ReactJS em conjunto com algumas bibliotecas, dentre elas está o Bootstrap em conjunto com Sass na estilização dos componentes, Banco de dados MongoDB e Cloudinary para hospedagem das imagens. O Deploy da aplicação foi feito pelo Netlify.</p>
+<h2>
+  Sobre os criadores:
+</h2>
+<p><a href="https://github.com/taisforsini">Taís Orsini</a>, <a href="https://github.com/BarbaraBateli">Barbara Bateli</a> e <a href="https://github.com/vagnerassilva">Vagner Silva</a> são estudantes de Desenvolvimento Web Fullstack na escola espanhola de tecnologia Ironhack, buscando através do atual projeto o desenvolvimento, consolidação e aplicação prática dos conhecimentos adquiridos em sala, e traduzir isso neste projeto.</p>
+<h2>
+  Experimente agora!
+</h2>
+<p>
+  Entre agora no app e faça seu próprio perfil e publicações!
+  <a href="https://trippers-ironhack.netlify.app/">Confira o app aqui!</a>
+  <p> Link do repositório do<a href="https://github.com/taisforsini/trippers-client"> backend</a> </p>
